@@ -17,7 +17,9 @@ interface CardDao {
     @Update
     suspend fun update(card: Card)
 
-    @Query("SELECT * FROM card_table")
+    @Query("SELECT * FROM card_table WHERE type = type")
     suspend fun getAllCards() : Flow<List<Card>>
 
+    @Query("DELETE FROM card_table")
+    suspend fun deleteAll() : Void
 }
